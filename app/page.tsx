@@ -12,7 +12,7 @@ import Chatbot from "@/components/Chatbot";
 import FloatingIcons from "@/components/FloatingIcons";
 
 export default function Home() {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(true)
 
   return (
     <>
