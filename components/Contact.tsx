@@ -20,9 +20,9 @@ export default function Contact() {
         if (!form) return;
 
         const formData = new FormData(form);
-        const name = formData.get('user_name') as string;
-        const email = formData.get('user_email') as string;
-        const message = formData.get('message') as string;
+        const name = (formData.get('user_name') as string)?.trim() || "";
+        const email = (formData.get('user_email') as string)?.trim() || "";
+        const message = (formData.get('message') as string)?.trim() || "";
 
         // Basic Validation
         if (!name.trim() || !email.trim() || !message.trim()) {
@@ -55,14 +55,23 @@ export default function Contact() {
 
         try {
             // 2. Send email via EmailJS
+            const serviceId = "service_e31bn1p";
+            const templateId = "template_vhu3cvw";
             const publicKey = "uTUSG5mPZ6zgzuK_E";
-            await emailjs.sendForm(
-                "service_lukeh2i", // Service ID provided by user
-                "template_vhu3cvw", // Template ID provided by user
-                form,
+
+            await emailjs.send(
+                serviceId,
+                templateId,
                 {
-                    publicKey: publicKey,
-                }
+                    user_name: name,
+                    name,
+                    user_email: email,
+                    email,
+                    message,
+                    reply_to: email,
+                    from_name: name,
+                },
+                publicKey
             );
 
             setIsSubmitting(false);
@@ -74,8 +83,9 @@ export default function Contact() {
             setIsSubmitting(false);
             setError("Failed to send message. Please try again or contact via WhatsApp.");
             console.error("EmailJS Submission error:", err);
-            if (err?.text) console.error("EmailJS Error text:", err.text);
-            if (err?.message) console.error("Error message:", err.message);
+            console.error("EmailJS status:", err?.status);
+            console.error("EmailJS text:", err?.text);
+            console.error("EmailJS message:", err?.message);
         }
     };
 
