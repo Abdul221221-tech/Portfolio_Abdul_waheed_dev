@@ -33,6 +33,4 @@ This project is a modern personal portfolio website built with **Next.js** and *
 - `npm run build` - create a production build
 - `npm run start` - run the production build
 
-## Notes
 
-This portfolio is designed for easy customization. You can update the content in the components folder and change the site details in the main layout and page files.
