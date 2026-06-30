@@ -546,8 +546,8 @@ Passionate Full Stack Developer focused on building scalable, responsive, and us
 ### Connect With Me
 
 - GitHub: https://github.com/Abdul221221-tech
-- LinkedIn: *(Add your LinkedIn URL)*
-- Email: *(Add your Email)*
+
+- Email: *(abdul221@gmail.com)*
 
 ---
 
